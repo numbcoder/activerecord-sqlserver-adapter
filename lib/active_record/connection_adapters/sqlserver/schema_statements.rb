@@ -419,7 +419,7 @@ module ActiveRecord
           sql = "SELECT "
           sql += " CASE"
           sql += "  WHEN #{table_schema} = 'dbo' THEN #{table_name}"
-          sql += "  ELSE CONCAT(#{table_schema}, '.', #{table_name})"
+          sql += "  ELSE #{table_schema} + '.' + #{table_name}"
           sql += " END"
           sql += " FROM #{database}INFORMATION_SCHEMA.TABLES WITH (NOLOCK)"
           sql += " WHERE TABLE_CATALOG = #{table_catalog}"
